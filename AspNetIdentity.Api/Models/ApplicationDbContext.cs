@@ -14,7 +14,7 @@ namespace AspNetIdentity.Api.Models
 
         }
 
-        public DbSet<User> Userrs{ get; set; }
+        
 
     }
 }
