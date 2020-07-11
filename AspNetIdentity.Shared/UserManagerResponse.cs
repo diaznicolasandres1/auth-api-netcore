@@ -9,6 +9,7 @@ namespace AspNetIdentity.Shared
         //After register
         public string Message { get; set; }
         public bool IsSucces { get; set; }
+        public DateTime? ExpireDate { get; set; }
         public IEnumerable<string> Errors { get; set; }
     }
 }
