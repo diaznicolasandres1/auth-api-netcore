@@ -38,6 +38,22 @@ namespace AspNetIdentity.Api.Controllers
 
             return BadRequest("Some properties are not valid"); // Code 400 error from client side
         }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> LoginAsync(LoginRequest loginRequest)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _userService.LoginUserAsync(loginRequest);
+                if (result.IsSucces)
+                {
+                    return Ok(result);
+                }
+                return BadRequest(result);
+               
+            }
+            return BadRequest("Invalid credentials");
+        }
        
     }
 }
