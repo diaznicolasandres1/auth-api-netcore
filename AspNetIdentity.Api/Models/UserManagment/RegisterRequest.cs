@@ -1,36 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace AspNetIdentity.Shared
+namespace AspNetIdentity.Api.Models.UserManagment
 {
-    public  class RegisterRequest
+    public class RegisterRequest
     {
-        //request from client to server
-
-        [Required]
+        [Required(ErrorMessage = "Ingrese un Email valido")]
         [StringLength(50)]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Debe ingresar un nombre")]
         [StringLength(25)]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Debe ingresar un apellido")]
         [StringLength(25)]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Debe ingresar una contraseña")]
         [StringLength(50)]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Debe confirmar su contraseña")]
         [StringLength(50)]
         public string ConfirmPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Debe ingresar un nombre de empresa")]
+        [StringLength(50)]
         public string NombreEmpresa { get; set; }
 
     }

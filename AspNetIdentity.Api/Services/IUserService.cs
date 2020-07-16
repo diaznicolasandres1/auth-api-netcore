@@ -1,4 +1,6 @@
-﻿using AspNetIdentity.Shared;
+﻿using AspNetIdentity.Api.Models;
+using AspNetIdentity.Api.Models.UserManagment;
+using AspNetIdentity.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -24,10 +26,10 @@ namespace AspNetIdentity.Api.Services
 
     public class UserService : IUserService
     {
-        private UserManager<IdentityUser> _userManager;
+        private UserManager<ApplicationUser> _userManager;
         private IConfiguration _configuration;
 
-        public UserService(UserManager<IdentityUser> userManager, IConfiguration configuration)
+        public UserService(UserManager<ApplicationUser> userManager, IConfiguration configuration)
         {
             _userManager = userManager;
             _configuration = configuration;
@@ -95,32 +97,34 @@ namespace AspNetIdentity.Api.Services
             {
                 return new UserManagerResponse
                 {
-                    Message = "Confirm password doesn't math with the password",
+                    Message = "La contraseña de confirmacion no coindice con la actual.",
                     IsSucces = false,                    
                 };  
             }
 
-            var identityUser = new IdentityUser
+            var applicationUser = new ApplicationUser
             {
                 Email = request.Email,
-                UserName = request.Email,
+                UserName = request.Email,                
+                NombreEmpresa = request.NombreEmpresa
+                
             };
 
-            var result =  await _userManager.CreateAsync(identityUser, request.Password);
+            var result =  await _userManager.CreateAsync(applicationUser, request.Password);
 
             if (result.Succeeded)
             {
                 //TODO: Send a confirmation email
                 return new UserManagerResponse
                 {
-                    Message = "User created succesfully!",
+                    Message = "El usuario se creo correctamente!",
                     IsSucces = true,
                 };
             }
 
             return new UserManagerResponse
             {
-                Message = "User didnt create",
+                Message = "No se pudo crear el usuario",
                 IsSucces = false,
                 Errors = result.Errors.Select(e => e.Description)
 
