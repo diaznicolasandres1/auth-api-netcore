@@ -10,6 +10,9 @@ namespace AspNetIdentity.Api.Models
     {
 
         public string NombreEmpresa { get; set; }
-        
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public int  IdEmpresa { get; set; }
+
     }
 }

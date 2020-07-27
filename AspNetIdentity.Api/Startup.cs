@@ -46,8 +46,9 @@ namespace AspNetIdentity.Api
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = true;
-                options.Password.RequireLowercase = true;
+                options.Password.RequireLowercase = false;
                 options.Password.RequiredLength = 5; //At least
+                options.Password.RequireNonAlphanumeric = false;
 
             }).AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders().AddErrorDescriber<MyErrorDescriber>();//Token for email/Phone confirmation

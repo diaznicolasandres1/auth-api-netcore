@@ -33,5 +33,9 @@ namespace AspNetIdentity.Api.Models.UserManagment
         [StringLength(50)]
         public string NombreEmpresa { get; set; }
 
+        [Required(ErrorMessage ="Debe ingresar un telefono")]
+        [StringLength(50)]
+        public string PhoneNumber { get; set; }
+
     }
 }

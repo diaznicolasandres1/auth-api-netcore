@@ -42,7 +42,7 @@ namespace AspNetIdentity.Api.Services
             {
                 return new UserManagerResponse
                 {
-                    Message = "There is no user with that Email addres",
+                    Message = "Usuario incorrecto",
                     IsSucces = false
                 };
             }
@@ -52,7 +52,7 @@ namespace AspNetIdentity.Api.Services
             {
                 return new UserManagerResponse
                 {
-                    Message = "Invalid Password",
+                    Message = "Contraseña incorrecta",
                     IsSucces = false
                 };
             }
@@ -106,7 +106,10 @@ namespace AspNetIdentity.Api.Services
             {
                 Email = request.Email,
                 UserName = request.Email,                
-                NombreEmpresa = request.NombreEmpresa
+                NombreEmpresa = request.NombreEmpresa,
+                PhoneNumber = request.PhoneNumber,
+                Name = request.FirstName,
+                LastName = request.LastName                
                 
             };
 
