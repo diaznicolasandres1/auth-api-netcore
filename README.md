@@ -21,8 +21,8 @@
 * **Data Params**
 `{
 	"Email": "diaz.nicolasandres@gmail.com",
-	"Password": "Nicolas9123!",
-	"ConfirmPassword" : "Nicolas9123!"
+	"Password": "Nicolas123!",
+	"ConfirmPassword" : "Nicolas123!"
 }`
 
 * **Success Response:**   
